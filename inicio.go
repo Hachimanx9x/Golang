@@ -18,6 +18,7 @@ func index( w http.ResponseWriter, r  *http.Request){
 
 func main(){
 	http.HandleFunc("/", index)
+	//servidor_formulario(); 
 	fmt.Println("el server")
 	http.ListenAndServe(":5000", nil)
 }

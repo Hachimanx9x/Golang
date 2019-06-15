@@ -1,0 +1,22 @@
+<!Doctype html>
+
+<html lang="es">
+<head>
+    <title> {{.Titulo}}</title>
+    <meta charset="utf-8"> 
+	<meta name="description" conent="Esto es un juego web">
+	<meta name="author" conent="HACHIMAN">
+    </head>
+    
+<body>
+   
+    
+    <div id={.Id}></div>
+ {{range .Contenidos}}
+ <script src= {{.Nombre}} method ="post" ></script>
+                           
+    {{end}}
+   
+    </body>    
+
+</html>

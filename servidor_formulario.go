@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"fmt"
 	"html/template"
-	"log"
+	
 
 )
 
@@ -24,10 +24,10 @@ func login(w http.ResponseWriter, r *http.Request)  {
 	}
 }
  
-func main(){
-	//fmt.Fprintf(w, "holi")
-	http.HandleFunc("/", login)
-err := http.ListenAndServe(":5000", nil)
-if err != nil{
-	log.Fatal("valimos verga", err)
-}}
+//func main(){
+
+//	http.HandleFunc("/", login)
+//err := http.ListenAndServe(":5000", nil)
+//if err != nil{
+//	log.Fatal("valimos verga", err)
+//}}

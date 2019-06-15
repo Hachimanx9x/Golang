@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--- lo de abajo es para usar los iconos -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Upload de archivos con Ajax y Golang</title>
+</head>
+<body>
+     <!--- el form  lo mandamos a la direccion  /upload  con el metodo post  y como manejamos archivos indicamos ques es por formato de dato
+     y le damos el estilo con el class-->
+    <form action="/upload" method="post" enctype="multipart/form-data" class="uploadForm">
+     <!---input de tipo archivo  y accpet solo imagenes-->
+        <input class="uploadForm__input" type="file" name="file" id="inputFile" accept="image/*">
+       <!---esto es letrero del archivo -->
+        <label class="uploadForm__label" for="inputFile">
+            <i class="fa fa-upload uploadForm__icon"></i>
+        </label>
+    </form>
+    <!-- -->
+    <div class="notification" id="alert"></div>
+ <!--- lo de abajo es para hacer peticiones ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.js"></script>
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+<!--- -->
