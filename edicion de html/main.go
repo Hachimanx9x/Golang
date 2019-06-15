@@ -1,38 +1,35 @@
 package main
 
 import (
+	"html/template"
 	"net/http"
-	"text/template"
 
 	"github.com/gorilla/mux"
 )
 
-type nombres struct {
+type Nombres struct {
 	Nombre string
 }
 
-type cuerpo struct {
-	Titulo     string
-	Id         string
-	Contenidos []nombres
-}
-type Codigo struct {
-	Lineas string
+type Cuerpo struct {
+	Titulo string
+
+	Contenidos []Nombres
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("public/index.html"))
-	data := cuerpo{
-		Titulo: "nombre ",
-		Id:     "juego",
-		Contenidos: []nombres{
-			{Nombre: "JS/Ajax.js"},
-			{Nombre: "JS/Teclado.js"},
-			{Nombre: "JS/Rectangulos.js"},
-			{Nombre: "JS/Mando.js"},
-			{Nombre: "JS/bucle1.js"},
-			{Nombre: "JS/Dimenciones.js"},
-			{Nombre: "JS/inicio.js"},
+	data := Cuerpo{
+		Titulo: "juego 2d ",
+
+		Contenidos: []Nombres{
+			{Nombre: "js/Ajax.js"},
+			{Nombre: "js/Teclado.js"},
+			{Nombre: "js/Rectangulos.js"},
+			{Nombre: "js/Mando.js"},
+			{Nombre: "js/bucle1.js"},
+			{Nombre: "js/Dimenciones.js"},
+			{Nombre: "js/inicio.js"},
 		},
 	}
 	t.Execute(w, data)
@@ -40,9 +37,9 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	http.HandleFunc("/", index)
 	router := mux.NewRouter()
-
 	router.HandleFunc("/", index)
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
+
 	http.ListenAndServe(":8080", router)
 }
